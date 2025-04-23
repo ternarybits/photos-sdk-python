@@ -83,6 +83,10 @@ class AssetResponse(BaseModel):
 
     updated_at: datetime
 
+    download_url: Optional[str] = None
+
     exif: Optional[Exif] = None
 
     metrics: Optional[Dict[str, Optional[float]]] = None
+
+    thumbnail_url: Optional[str] = None
