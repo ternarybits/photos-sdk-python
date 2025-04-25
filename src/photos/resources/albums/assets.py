@@ -6,7 +6,7 @@ from typing import List
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -87,7 +87,7 @@ class AssetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """
         Adds one or more existing assets to a specific album.
 
@@ -102,13 +102,14 @@ class AssetsResource(SyncAPIResource):
         """
         if not album_id:
             raise ValueError(f"Expected a non-empty value for `album_id` but received {album_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/api/albums/{album_id}/assets",
             body=maybe_transform({"asset_ids": asset_ids}, asset_add_params.AssetAddParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
     def remove(
@@ -122,7 +123,7 @@ class AssetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """Removes one or more assets from a specific album.
 
         Note: This does not delete the
@@ -139,13 +140,14 @@ class AssetsResource(SyncAPIResource):
         """
         if not album_id:
             raise ValueError(f"Expected a non-empty value for `album_id` but received {album_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/api/albums/{album_id}/assets",
             body=maybe_transform({"asset_ids": asset_ids}, asset_remove_params.AssetRemoveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
 
@@ -213,7 +215,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """
         Adds one or more existing assets to a specific album.
 
@@ -228,13 +230,14 @@ class AsyncAssetsResource(AsyncAPIResource):
         """
         if not album_id:
             raise ValueError(f"Expected a non-empty value for `album_id` but received {album_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/api/albums/{album_id}/assets",
             body=await async_maybe_transform({"asset_ids": asset_ids}, asset_add_params.AssetAddParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
     async def remove(
@@ -248,7 +251,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """Removes one or more assets from a specific album.
 
         Note: This does not delete the
@@ -265,13 +268,14 @@ class AsyncAssetsResource(AsyncAPIResource):
         """
         if not album_id:
             raise ValueError(f"Expected a non-empty value for `album_id` but received {album_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/api/albums/{album_id}/assets",
             body=await async_maybe_transform({"asset_ids": asset_ids}, asset_remove_params.AssetRemoveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
 
