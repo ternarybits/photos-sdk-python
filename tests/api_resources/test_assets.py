@@ -193,7 +193,7 @@ class TestAssets:
         asset = client.assets.download(
             "asset_id",
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -205,7 +205,7 @@ class TestAssets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         asset = response.parse()
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -217,7 +217,7 @@ class TestAssets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             asset = response.parse()
-            assert_matches_type(object, asset, path=["response"])
+            assert asset is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -235,7 +235,7 @@ class TestAssets:
         asset = client.assets.download_thumbnail(
             asset_id="asset_id",
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -244,7 +244,7 @@ class TestAssets:
             asset_id="asset_id",
             size="size",
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -256,7 +256,7 @@ class TestAssets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         asset = response.parse()
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -268,7 +268,7 @@ class TestAssets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             asset = response.parse()
-            assert_matches_type(object, asset, path=["response"])
+            assert asset is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -458,7 +458,7 @@ class TestAsyncAssets:
         asset = await async_client.assets.download(
             "asset_id",
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -470,7 +470,7 @@ class TestAsyncAssets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         asset = await response.parse()
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -482,7 +482,7 @@ class TestAsyncAssets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             asset = await response.parse()
-            assert_matches_type(object, asset, path=["response"])
+            assert asset is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -500,7 +500,7 @@ class TestAsyncAssets:
         asset = await async_client.assets.download_thumbnail(
             asset_id="asset_id",
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -509,7 +509,7 @@ class TestAsyncAssets:
             asset_id="asset_id",
             size="size",
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -521,7 +521,7 @@ class TestAsyncAssets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         asset = await response.parse()
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -533,7 +533,7 @@ class TestAsyncAssets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             asset = await response.parse()
-            assert_matches_type(object, asset, path=["response"])
+            assert asset is None
 
         assert cast(Any, response.is_closed) is True
 

@@ -8,7 +8,7 @@ from datetime import datetime
 import httpx
 
 from ..types import asset_list_params, asset_create_params, asset_download_thumbnail_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileTypes
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
 from .._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -227,7 +227,7 @@ class AssetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """
         Downloads the original file for a specific asset.
 
@@ -242,12 +242,13 @@ class AssetsResource(SyncAPIResource):
         """
         if not asset_id:
             raise ValueError(f"Expected a non-empty value for `asset_id` but received {asset_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             f"/api/assets/{asset_id}/download",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
     def download_thumbnail(
@@ -261,7 +262,7 @@ class AssetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """Downloads a thumbnail for a specific asset.
 
         The exact thumbnail returned depends
@@ -280,6 +281,7 @@ class AssetsResource(SyncAPIResource):
         """
         if not asset_id:
             raise ValueError(f"Expected a non-empty value for `asset_id` but received {asset_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
             f"/api/assets/{asset_id}/thumbnail",
             options=make_request_options(
@@ -289,7 +291,7 @@ class AssetsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"size": size}, asset_download_thumbnail_params.AssetDownloadThumbnailParams),
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
 
@@ -495,7 +497,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """
         Downloads the original file for a specific asset.
 
@@ -510,12 +512,13 @@ class AsyncAssetsResource(AsyncAPIResource):
         """
         if not asset_id:
             raise ValueError(f"Expected a non-empty value for `asset_id` but received {asset_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             f"/api/assets/{asset_id}/download",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
     async def download_thumbnail(
@@ -529,7 +532,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """Downloads a thumbnail for a specific asset.
 
         The exact thumbnail returned depends
@@ -548,6 +551,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         """
         if not asset_id:
             raise ValueError(f"Expected a non-empty value for `asset_id` but received {asset_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
             f"/api/assets/{asset_id}/thumbnail",
             options=make_request_options(
@@ -559,7 +563,7 @@ class AsyncAssetsResource(AsyncAPIResource):
                     {"size": size}, asset_download_thumbnail_params.AssetDownloadThumbnailParams
                 ),
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
 
