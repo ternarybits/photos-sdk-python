@@ -66,7 +66,7 @@ class TestAssets:
             album_id="album_id",
             asset_ids=["string"],
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -79,7 +79,7 @@ class TestAssets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         asset = response.parse()
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -92,7 +92,7 @@ class TestAssets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             asset = response.parse()
-            assert_matches_type(object, asset, path=["response"])
+            assert asset is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -112,7 +112,7 @@ class TestAssets:
             album_id="album_id",
             asset_ids=["string"],
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -125,7 +125,7 @@ class TestAssets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         asset = response.parse()
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -138,7 +138,7 @@ class TestAssets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             asset = response.parse()
-            assert_matches_type(object, asset, path=["response"])
+            assert asset is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -204,7 +204,7 @@ class TestAsyncAssets:
             album_id="album_id",
             asset_ids=["string"],
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -217,7 +217,7 @@ class TestAsyncAssets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         asset = await response.parse()
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -230,7 +230,7 @@ class TestAsyncAssets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             asset = await response.parse()
-            assert_matches_type(object, asset, path=["response"])
+            assert asset is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -250,7 +250,7 @@ class TestAsyncAssets:
             album_id="album_id",
             asset_ids=["string"],
         )
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -263,7 +263,7 @@ class TestAsyncAssets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         asset = await response.parse()
-        assert_matches_type(object, asset, path=["response"])
+        assert asset is None
 
     @pytest.mark.skip()
     @parametrize
@@ -276,7 +276,7 @@ class TestAsyncAssets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             asset = await response.parse()
-            assert_matches_type(object, asset, path=["response"])
+            assert asset is None
 
         assert cast(Any, response.is_closed) is True
 

@@ -15,7 +15,7 @@ from .assets import (
     AsyncAssetsResourceWithStreamingResponse,
 )
 from ...types import album_list_params, album_create_params, album_update_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -225,7 +225,7 @@ class AlbumsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """Deletes a specific album.
 
         Note: This does not delete the assets within the
@@ -242,12 +242,13 @@ class AlbumsResource(SyncAPIResource):
         """
         if not album_id:
             raise ValueError(f"Expected a non-empty value for `album_id` but received {album_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/api/albums/{album_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
 
@@ -444,7 +445,7 @@ class AsyncAlbumsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> None:
         """Deletes a specific album.
 
         Note: This does not delete the assets within the
@@ -461,12 +462,13 @@ class AsyncAlbumsResource(AsyncAPIResource):
         """
         if not album_id:
             raise ValueError(f"Expected a non-empty value for `album_id` but received {album_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/api/albums/{album_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=NoneType,
         )
 
 
