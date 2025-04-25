@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import Union, Mapping, Optional, cast
 from datetime import datetime
 
 import httpx
 
 from ..types import asset_list_params, asset_create_params, asset_download_thumbnail_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileTypes
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -74,18 +74,24 @@ class AssetsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        body = deepcopy_minimal(
+            {
+                "asset_data": asset_data,
+                "device_asset_id": device_asset_id,
+                "device_id": device_id,
+                "file_created_at": file_created_at,
+                "file_modified_at": file_modified_at,
+            }
+        )
+        files = extract_files(cast(Mapping[str, object], body), paths=[["asset_data"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
             "/api/assets",
-            body=maybe_transform(
-                {
-                    "asset_data": asset_data,
-                    "device_asset_id": device_asset_id,
-                    "device_id": device_id,
-                    "file_created_at": file_created_at,
-                    "file_modified_at": file_modified_at,
-                },
-                asset_create_params.AssetCreateParams,
-            ),
+            body=maybe_transform(body, asset_create_params.AssetCreateParams),
+            files=files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -336,18 +342,24 @@ class AsyncAssetsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        body = deepcopy_minimal(
+            {
+                "asset_data": asset_data,
+                "device_asset_id": device_asset_id,
+                "device_id": device_id,
+                "file_created_at": file_created_at,
+                "file_modified_at": file_modified_at,
+            }
+        )
+        files = extract_files(cast(Mapping[str, object], body), paths=[["asset_data"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
             "/api/assets",
-            body=await async_maybe_transform(
-                {
-                    "asset_data": asset_data,
-                    "device_asset_id": device_asset_id,
-                    "device_id": device_id,
-                    "file_created_at": file_created_at,
-                    "file_modified_at": file_modified_at,
-                },
-                asset_create_params.AssetCreateParams,
-            ),
+            body=await async_maybe_transform(body, asset_create_params.AssetCreateParams),
+            files=files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
