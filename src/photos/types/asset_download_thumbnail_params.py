@@ -10,4 +10,4 @@ __all__ = ["AssetDownloadThumbnailParams"]
 
 class AssetDownloadThumbnailParams(TypedDict, total=False):
     size: Optional[str]
-    """Desired thumbnail size (e.g., small, medium)"""
+    """Desired thumbnail size (e.g., thumbnail, preview)"""
