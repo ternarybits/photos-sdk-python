@@ -44,3 +44,15 @@ Methods:
 - <code title="get /api/albums/{album_id}/assets">client.albums.assets.<a href="./src/photos/resources/albums/assets.py">list</a>(album_id) -> <a href="./src/photos/types/albums/asset_list_response.py">AssetListResponse</a></code>
 - <code title="post /api/albums/{album_id}/assets">client.albums.assets.<a href="./src/photos/resources/albums/assets.py">add</a>(album_id, \*\*<a href="src/photos/types/albums/asset_add_params.py">params</a>) -> None</code>
 - <code title="delete /api/albums/{album_id}/assets">client.albums.assets.<a href="./src/photos/resources/albums/assets.py">remove</a>(album_id, \*\*<a href="src/photos/types/albums/asset_remove_params.py">params</a>) -> None</code>
+
+# Search
+
+Types:
+
+```python
+from photos.types import SearchResponse
+```
+
+Methods:
+
+- <code title="get /api/search">client.search.<a href="./src/photos/resources/search.py">search</a>(\*\*<a href="src/photos/types/search_search_params.py">params</a>) -> <a href="./src/photos/types/search_response.py">SearchResponse</a></code>
