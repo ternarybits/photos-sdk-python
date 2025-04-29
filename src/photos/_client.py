@@ -22,7 +22,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import assets
+from .resources import assets, search
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -38,6 +38,7 @@ __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Photos", "
 class Photos(SyncAPIClient):
     assets: assets.AssetsResource
     albums: albums.AlbumsResource
+    search: search.SearchResource
     with_raw_response: PhotosWithRawResponse
     with_streaming_response: PhotosWithStreamedResponse
 
@@ -93,6 +94,7 @@ class Photos(SyncAPIClient):
 
         self.assets = assets.AssetsResource(self)
         self.albums = albums.AlbumsResource(self)
+        self.search = search.SearchResource(self)
         self.with_raw_response = PhotosWithRawResponse(self)
         self.with_streaming_response = PhotosWithStreamedResponse(self)
 
@@ -217,6 +219,7 @@ class Photos(SyncAPIClient):
 class AsyncPhotos(AsyncAPIClient):
     assets: assets.AsyncAssetsResource
     albums: albums.AsyncAlbumsResource
+    search: search.AsyncSearchResource
     with_raw_response: AsyncPhotosWithRawResponse
     with_streaming_response: AsyncPhotosWithStreamedResponse
 
@@ -272,6 +275,7 @@ class AsyncPhotos(AsyncAPIClient):
 
         self.assets = assets.AsyncAssetsResource(self)
         self.albums = albums.AsyncAlbumsResource(self)
+        self.search = search.AsyncSearchResource(self)
         self.with_raw_response = AsyncPhotosWithRawResponse(self)
         self.with_streaming_response = AsyncPhotosWithStreamedResponse(self)
 
@@ -397,24 +401,28 @@ class PhotosWithRawResponse:
     def __init__(self, client: Photos) -> None:
         self.assets = assets.AssetsResourceWithRawResponse(client.assets)
         self.albums = albums.AlbumsResourceWithRawResponse(client.albums)
+        self.search = search.SearchResourceWithRawResponse(client.search)
 
 
 class AsyncPhotosWithRawResponse:
     def __init__(self, client: AsyncPhotos) -> None:
         self.assets = assets.AsyncAssetsResourceWithRawResponse(client.assets)
         self.albums = albums.AsyncAlbumsResourceWithRawResponse(client.albums)
+        self.search = search.AsyncSearchResourceWithRawResponse(client.search)
 
 
 class PhotosWithStreamedResponse:
     def __init__(self, client: Photos) -> None:
         self.assets = assets.AssetsResourceWithStreamingResponse(client.assets)
         self.albums = albums.AlbumsResourceWithStreamingResponse(client.albums)
+        self.search = search.SearchResourceWithStreamingResponse(client.search)
 
 
 class AsyncPhotosWithStreamedResponse:
     def __init__(self, client: AsyncPhotos) -> None:
         self.assets = assets.AsyncAssetsResourceWithStreamingResponse(client.assets)
         self.albums = albums.AsyncAlbumsResourceWithStreamingResponse(client.albums)
+        self.search = search.AsyncSearchResourceWithStreamingResponse(client.search)
 
 
 Client = Photos
