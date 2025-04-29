@@ -16,6 +16,14 @@ from .assets import (
     AssetsResourceWithStreamingResponse,
     AsyncAssetsResourceWithStreamingResponse,
 )
+from .search import (
+    SearchResource,
+    AsyncSearchResource,
+    SearchResourceWithRawResponse,
+    AsyncSearchResourceWithRawResponse,
+    SearchResourceWithStreamingResponse,
+    AsyncSearchResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AssetsResource",
@@ -30,4 +38,10 @@ __all__ = [
     "AsyncAlbumsResourceWithRawResponse",
     "AlbumsResourceWithStreamingResponse",
     "AsyncAlbumsResourceWithStreamingResponse",
+    "SearchResource",
+    "AsyncSearchResource",
+    "SearchResourceWithRawResponse",
+    "AsyncSearchResourceWithRawResponse",
+    "SearchResourceWithStreamingResponse",
+    "AsyncSearchResourceWithStreamingResponse",
 ]
