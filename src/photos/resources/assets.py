@@ -270,7 +270,7 @@ class AssetsResource(SyncAPIResource):
         on availability and the optional `size` parameter.
 
         Args:
-          size: Desired thumbnail size (e.g., small, medium)
+          size: Desired thumbnail size (e.g., thumbnail, preview)
 
           extra_headers: Send extra headers
 
@@ -541,7 +541,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         on availability and the optional `size` parameter.
 
         Args:
-          size: Desired thumbnail size (e.g., small, medium)
+          size: Desired thumbnail size (e.g., thumbnail, preview)
 
           extra_headers: Send extra headers
 
