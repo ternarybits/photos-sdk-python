@@ -45,6 +45,37 @@ Methods:
 - <code title="post /api/albums/{album_id}/assets">client.albums.assets.<a href="./src/photos/resources/albums/assets.py">add</a>(album_id, \*\*<a href="src/photos/types/albums/asset_add_params.py">params</a>) -> None</code>
 - <code title="delete /api/albums/{album_id}/assets">client.albums.assets.<a href="./src/photos/resources/albums/assets.py">remove</a>(album_id, \*\*<a href="src/photos/types/albums/asset_remove_params.py">params</a>) -> None</code>
 
+# Faces
+
+Types:
+
+```python
+from photos.types import FaceResponse
+```
+
+Methods:
+
+- <code title="get /api/faces/{face_id}">client.faces.<a href="./src/photos/resources/faces.py">retrieve</a>(face_id) -> <a href="./src/photos/types/face_response.py">FaceResponse</a></code>
+- <code title="patch /api/faces/{face_id}">client.faces.<a href="./src/photos/resources/faces.py">update</a>(face_id, \*\*<a href="src/photos/types/face_update_params.py">params</a>) -> <a href="./src/photos/types/face_response.py">FaceResponse</a></code>
+- <code title="get /api/faces">client.faces.<a href="./src/photos/resources/faces.py">list</a>(\*\*<a href="src/photos/types/face_list_params.py">params</a>) -> <a href="./src/photos/types/face_response.py">SyncCursorPage[FaceResponse]</a></code>
+- <code title="delete /api/faces/{face_id}">client.faces.<a href="./src/photos/resources/faces.py">delete</a>(face_id) -> None</code>
+
+# People
+
+Types:
+
+```python
+from photos.types import PersonResponse
+```
+
+Methods:
+
+- <code title="post /api/people">client.people.<a href="./src/photos/resources/people.py">create</a>(\*\*<a href="src/photos/types/person_create_params.py">params</a>) -> <a href="./src/photos/types/person_response.py">PersonResponse</a></code>
+- <code title="get /api/people/{person_id}">client.people.<a href="./src/photos/resources/people.py">retrieve</a>(person_id) -> <a href="./src/photos/types/person_response.py">PersonResponse</a></code>
+- <code title="patch /api/people/{person_id}">client.people.<a href="./src/photos/resources/people.py">update</a>(person_id, \*\*<a href="src/photos/types/person_update_params.py">params</a>) -> <a href="./src/photos/types/person_response.py">PersonResponse</a></code>
+- <code title="get /api/people">client.people.<a href="./src/photos/resources/people.py">list</a>(\*\*<a href="src/photos/types/person_list_params.py">params</a>) -> <a href="./src/photos/types/person_response.py">SyncCursorPage[PersonResponse]</a></code>
+- <code title="delete /api/people/{person_id}">client.people.<a href="./src/photos/resources/people.py">delete</a>(person_id) -> None</code>
+
 # Search
 
 Types:
