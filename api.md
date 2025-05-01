@@ -12,8 +12,8 @@ Methods:
 - <code title="get /api/assets/{asset_id}">client.assets.<a href="./src/photos/resources/assets.py">retrieve</a>(asset_id) -> <a href="./src/photos/types/asset_response.py">AssetResponse</a></code>
 - <code title="get /api/assets">client.assets.<a href="./src/photos/resources/assets.py">list</a>(\*\*<a href="src/photos/types/asset_list_params.py">params</a>) -> <a href="./src/photos/types/asset_response.py">SyncCursorPage[AssetResponse]</a></code>
 - <code title="delete /api/assets/{asset_id}">client.assets.<a href="./src/photos/resources/assets.py">delete</a>(asset_id) -> None</code>
-- <code title="get /api/assets/{asset_id}/download">client.assets.<a href="./src/photos/resources/assets.py">download</a>(asset_id) -> None</code>
-- <code title="get /api/assets/{asset_id}/thumbnail">client.assets.<a href="./src/photos/resources/assets.py">download_thumbnail</a>(asset_id, \*\*<a href="src/photos/types/asset_download_thumbnail_params.py">params</a>) -> None</code>
+- <code title="get /api/assets/{asset_id}/download">client.assets.<a href="./src/photos/resources/assets.py">download</a>(asset_id) -> BinaryAPIResponse</code>
+- <code title="get /api/assets/{asset_id}/thumbnail">client.assets.<a href="./src/photos/resources/assets.py">download_thumbnail</a>(asset_id, \*\*<a href="src/photos/types/asset_download_thumbnail_params.py">params</a>) -> BinaryAPIResponse</code>
 
 # Albums
 
