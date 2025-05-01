@@ -13,10 +13,18 @@ from .._utils import extract_files, maybe_transform, deepcopy_minimal, async_may
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
+    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
+    to_custom_streamed_response_wrapper,
+    async_to_custom_raw_response_wrapper,
+    async_to_custom_streamed_response_wrapper,
 )
 from ..pagination import SyncCursorPage, AsyncCursorPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -228,7 +236,7 @@ class AssetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> BinaryAPIResponse:
         """
         Downloads the original file for a specific asset.
 
@@ -243,13 +251,13 @@ class AssetsResource(SyncAPIResource):
         """
         if not asset_id:
             raise ValueError(f"Expected a non-empty value for `asset_id` but received {asset_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers = {"Accept": "image/*", **(extra_headers or {})}
         return self._get(
             f"/api/assets/{asset_id}/download",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=BinaryAPIResponse,
         )
 
     def download_thumbnail(
@@ -263,7 +271,7 @@ class AssetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> BinaryAPIResponse:
         """Downloads a thumbnail for a specific asset.
 
         The exact thumbnail returned depends
@@ -282,7 +290,7 @@ class AssetsResource(SyncAPIResource):
         """
         if not asset_id:
             raise ValueError(f"Expected a non-empty value for `asset_id` but received {asset_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers = {"Accept": "image/*", **(extra_headers or {})}
         return self._get(
             f"/api/assets/{asset_id}/thumbnail",
             options=make_request_options(
@@ -292,7 +300,7 @@ class AssetsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"size": size}, asset_download_thumbnail_params.AssetDownloadThumbnailParams),
             ),
-            cast_to=NoneType,
+            cast_to=BinaryAPIResponse,
         )
 
 
@@ -499,7 +507,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AsyncBinaryAPIResponse:
         """
         Downloads the original file for a specific asset.
 
@@ -514,13 +522,13 @@ class AsyncAssetsResource(AsyncAPIResource):
         """
         if not asset_id:
             raise ValueError(f"Expected a non-empty value for `asset_id` but received {asset_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers = {"Accept": "image/*", **(extra_headers or {})}
         return await self._get(
             f"/api/assets/{asset_id}/download",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NoneType,
+            cast_to=AsyncBinaryAPIResponse,
         )
 
     async def download_thumbnail(
@@ -534,7 +542,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
+    ) -> AsyncBinaryAPIResponse:
         """Downloads a thumbnail for a specific asset.
 
         The exact thumbnail returned depends
@@ -553,7 +561,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         """
         if not asset_id:
             raise ValueError(f"Expected a non-empty value for `asset_id` but received {asset_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers = {"Accept": "image/*", **(extra_headers or {})}
         return await self._get(
             f"/api/assets/{asset_id}/thumbnail",
             options=make_request_options(
@@ -565,7 +573,7 @@ class AsyncAssetsResource(AsyncAPIResource):
                     {"size": size}, asset_download_thumbnail_params.AssetDownloadThumbnailParams
                 ),
             ),
-            cast_to=NoneType,
+            cast_to=AsyncBinaryAPIResponse,
         )
 
 
@@ -585,11 +593,13 @@ class AssetsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             assets.delete,
         )
-        self.download = to_raw_response_wrapper(
+        self.download = to_custom_raw_response_wrapper(
             assets.download,
+            BinaryAPIResponse,
         )
-        self.download_thumbnail = to_raw_response_wrapper(
+        self.download_thumbnail = to_custom_raw_response_wrapper(
             assets.download_thumbnail,
+            BinaryAPIResponse,
         )
 
 
@@ -609,11 +619,13 @@ class AsyncAssetsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             assets.delete,
         )
-        self.download = async_to_raw_response_wrapper(
+        self.download = async_to_custom_raw_response_wrapper(
             assets.download,
+            AsyncBinaryAPIResponse,
         )
-        self.download_thumbnail = async_to_raw_response_wrapper(
+        self.download_thumbnail = async_to_custom_raw_response_wrapper(
             assets.download_thumbnail,
+            AsyncBinaryAPIResponse,
         )
 
 
@@ -633,11 +645,13 @@ class AssetsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             assets.delete,
         )
-        self.download = to_streamed_response_wrapper(
+        self.download = to_custom_streamed_response_wrapper(
             assets.download,
+            StreamedBinaryAPIResponse,
         )
-        self.download_thumbnail = to_streamed_response_wrapper(
+        self.download_thumbnail = to_custom_streamed_response_wrapper(
             assets.download_thumbnail,
+            StreamedBinaryAPIResponse,
         )
 
 
@@ -657,9 +671,11 @@ class AsyncAssetsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             assets.delete,
         )
-        self.download = async_to_streamed_response_wrapper(
+        self.download = async_to_custom_streamed_response_wrapper(
             assets.download,
+            AsyncStreamedBinaryAPIResponse,
         )
-        self.download_thumbnail = async_to_streamed_response_wrapper(
+        self.download_thumbnail = async_to_custom_streamed_response_wrapper(
             assets.download_thumbnail,
+            AsyncStreamedBinaryAPIResponse,
         )
