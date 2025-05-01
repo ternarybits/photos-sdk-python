@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .faces import (
+    FacesResource,
+    AsyncFacesResource,
+    FacesResourceWithRawResponse,
+    AsyncFacesResourceWithRawResponse,
+    FacesResourceWithStreamingResponse,
+    AsyncFacesResourceWithStreamingResponse,
+)
 from .albums import (
     AlbumsResource,
     AsyncAlbumsResource,
@@ -15,6 +23,14 @@ from .assets import (
     AsyncAssetsResourceWithRawResponse,
     AssetsResourceWithStreamingResponse,
     AsyncAssetsResourceWithStreamingResponse,
+)
+from .people import (
+    PeopleResource,
+    AsyncPeopleResource,
+    PeopleResourceWithRawResponse,
+    AsyncPeopleResourceWithRawResponse,
+    PeopleResourceWithStreamingResponse,
+    AsyncPeopleResourceWithStreamingResponse,
 )
 from .search import (
     SearchResource,
@@ -38,6 +54,18 @@ __all__ = [
     "AsyncAlbumsResourceWithRawResponse",
     "AlbumsResourceWithStreamingResponse",
     "AsyncAlbumsResourceWithStreamingResponse",
+    "FacesResource",
+    "AsyncFacesResource",
+    "FacesResourceWithRawResponse",
+    "AsyncFacesResourceWithRawResponse",
+    "FacesResourceWithStreamingResponse",
+    "AsyncFacesResourceWithStreamingResponse",
+    "PeopleResource",
+    "AsyncPeopleResource",
+    "PeopleResourceWithRawResponse",
+    "AsyncPeopleResourceWithRawResponse",
+    "PeopleResourceWithStreamingResponse",
+    "AsyncPeopleResourceWithStreamingResponse",
     "SearchResource",
     "AsyncSearchResource",
     "SearchResourceWithRawResponse",
