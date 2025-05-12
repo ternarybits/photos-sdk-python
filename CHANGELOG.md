@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-05-12)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/ternarybits/photos-sdk-python/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** update via SDK Studio ([8a38813](https://github.com/ternarybits/photos-sdk-python/commit/8a388133ace3af85de252124c31daa7817076ef3))
+
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([428974a](https://github.com/ternarybits/photos-sdk-python/commit/428974a32614f68a78f7e5d1c6a8cc11c1530276))
+
+
+### Chores
+
+* **internal:** avoid errors for isinstance checks on proxies ([a2b0af8](https://github.com/ternarybits/photos-sdk-python/commit/a2b0af8028f70d9b5446494e98a7c220d9ca4146))
+
 ## 0.1.0-alpha.4 (2025-05-01)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/ternarybits/photos-sdk-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
