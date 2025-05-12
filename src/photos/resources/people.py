@@ -174,6 +174,8 @@ class PeopleResource(SyncAPIResource):
     def list(
         self,
         *,
+        album_id: Optional[str] | NotGiven = NOT_GIVEN,
+        asset_id: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         starting_after_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -187,6 +189,10 @@ class PeopleResource(SyncAPIResource):
         Retrieves a paginated list of people, ordered by creation time, descending.
 
         Args:
+          album_id: Include only people associated with this album ID
+
+          asset_id: Include only people associated with this asset ID
+
           starting_after_id: Person ID to start listing people after
 
           extra_headers: Send extra headers
@@ -207,6 +213,8 @@ class PeopleResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "album_id": album_id,
+                        "asset_id": asset_id,
                         "limit": limit,
                         "starting_after_id": starting_after_id,
                     },
@@ -402,6 +410,8 @@ class AsyncPeopleResource(AsyncAPIResource):
     def list(
         self,
         *,
+        album_id: Optional[str] | NotGiven = NOT_GIVEN,
+        asset_id: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         starting_after_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -415,6 +425,10 @@ class AsyncPeopleResource(AsyncAPIResource):
         Retrieves a paginated list of people, ordered by creation time, descending.
 
         Args:
+          album_id: Include only people associated with this album ID
+
+          asset_id: Include only people associated with this asset ID
+
           starting_after_id: Person ID to start listing people after
 
           extra_headers: Send extra headers
@@ -435,6 +449,8 @@ class AsyncPeopleResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "album_id": album_id,
+                        "asset_id": asset_id,
                         "limit": limit,
                         "starting_after_id": starting_after_id,
                     },
