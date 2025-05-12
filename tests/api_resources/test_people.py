@@ -166,6 +166,8 @@ class TestPeople:
     @parametrize
     def test_method_list_with_all_params(self, client: Photos) -> None:
         person = client.people.list(
+            album_id="album_id",
+            asset_id="asset_id",
             limit=1,
             starting_after_id="starting_after_id",
         )
@@ -386,6 +388,8 @@ class TestAsyncPeople:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncPhotos) -> None:
         person = await async_client.people.list(
+            album_id="album_id",
+            asset_id="asset_id",
             limit=1,
             starting_after_id="starting_after_id",
         )

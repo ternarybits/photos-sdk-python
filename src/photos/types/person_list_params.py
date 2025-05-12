@@ -9,6 +9,12 @@ __all__ = ["PersonListParams"]
 
 
 class PersonListParams(TypedDict, total=False):
+    album_id: Optional[str]
+    """Include only people associated with this album ID"""
+
+    asset_id: Optional[str]
+    """Include only people associated with this asset ID"""
+
     limit: int
 
     starting_after_id: Optional[str]
