@@ -12,10 +12,18 @@ from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
+    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
+    to_custom_streamed_response_wrapper,
+    async_to_custom_raw_response_wrapper,
+    async_to_custom_streamed_response_wrapper,
 )
 from ..pagination import SyncCursorPage, AsyncCursorPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -213,7 +221,7 @@ class FacesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> BinaryAPIResponse:
         """
         Retrieves a thumbnail for a specific face.
 
@@ -228,12 +236,13 @@ class FacesResource(SyncAPIResource):
         """
         if not face_id:
             raise ValueError(f"Expected a non-empty value for `face_id` but received {face_id!r}")
+        extra_headers = {"Accept": "image/*", **(extra_headers or {})}
         return self._get(
             f"/api/faces/{face_id}/thumbnail",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=BinaryAPIResponse,
         )
 
 
@@ -426,7 +435,7 @@ class AsyncFacesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncBinaryAPIResponse:
         """
         Retrieves a thumbnail for a specific face.
 
@@ -441,12 +450,13 @@ class AsyncFacesResource(AsyncAPIResource):
         """
         if not face_id:
             raise ValueError(f"Expected a non-empty value for `face_id` but received {face_id!r}")
+        extra_headers = {"Accept": "image/*", **(extra_headers or {})}
         return await self._get(
             f"/api/faces/{face_id}/thumbnail",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=AsyncBinaryAPIResponse,
         )
 
 
@@ -466,8 +476,9 @@ class FacesResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             faces.delete,
         )
-        self.download_thumbnail = to_raw_response_wrapper(
+        self.download_thumbnail = to_custom_raw_response_wrapper(
             faces.download_thumbnail,
+            BinaryAPIResponse,
         )
 
 
@@ -487,8 +498,9 @@ class AsyncFacesResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             faces.delete,
         )
-        self.download_thumbnail = async_to_raw_response_wrapper(
+        self.download_thumbnail = async_to_custom_raw_response_wrapper(
             faces.download_thumbnail,
+            AsyncBinaryAPIResponse,
         )
 
 
@@ -508,8 +520,9 @@ class FacesResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             faces.delete,
         )
-        self.download_thumbnail = to_streamed_response_wrapper(
+        self.download_thumbnail = to_custom_streamed_response_wrapper(
             faces.download_thumbnail,
+            StreamedBinaryAPIResponse,
         )
 
 
@@ -529,6 +542,7 @@ class AsyncFacesResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             faces.delete,
         )
-        self.download_thumbnail = async_to_streamed_response_wrapper(
+        self.download_thumbnail = async_to_custom_streamed_response_wrapper(
             faces.download_thumbnail,
+            AsyncStreamedBinaryAPIResponse,
         )
