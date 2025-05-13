@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-05-13)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/ternarybits/photos-sdk-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** update via SDK Studio ([25ba592](https://github.com/ternarybits/photos-sdk-python/commit/25ba592a9ac80521d1712c879501abeb44c42426))
+* **api:** update via SDK Studio ([f024647](https://github.com/ternarybits/photos-sdk-python/commit/f02464724b4572f7d1982213b259d0687f4d4a37))
+
 ## 0.1.0-alpha.5 (2025-05-12)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/ternarybits/photos-sdk-python/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
