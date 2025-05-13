@@ -21,4 +21,6 @@ class FaceResponse(BaseModel):
 
     person_id: Optional[str] = None
 
+    thumbnail_url: Optional[str] = None
+
     timestamp_ms: Optional[int] = None

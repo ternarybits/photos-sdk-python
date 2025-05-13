@@ -24,3 +24,5 @@ class PersonResponse(BaseModel):
     name: Optional[str] = None
 
     thumbnail_face_id: Optional[str] = None
+
+    thumbnail_face_url: Optional[str] = None
