@@ -192,6 +192,48 @@ class TestFaces:
                 "",
             )
 
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_download_thumbnail(self, client: Photos) -> None:
+        face = client.faces.download_thumbnail(
+            "face_id",
+        )
+        assert_matches_type(object, face, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_download_thumbnail(self, client: Photos) -> None:
+        response = client.faces.with_raw_response.download_thumbnail(
+            "face_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        face = response.parse()
+        assert_matches_type(object, face, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_download_thumbnail(self, client: Photos) -> None:
+        with client.faces.with_streaming_response.download_thumbnail(
+            "face_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            face = response.parse()
+            assert_matches_type(object, face, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_path_params_download_thumbnail(self, client: Photos) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `face_id` but received ''"):
+            client.faces.with_raw_response.download_thumbnail(
+                "",
+            )
+
 
 class TestAsyncFaces:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -367,5 +409,47 @@ class TestAsyncFaces:
     async def test_path_params_delete(self, async_client: AsyncPhotos) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `face_id` but received ''"):
             await async_client.faces.with_raw_response.delete(
+                "",
+            )
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_download_thumbnail(self, async_client: AsyncPhotos) -> None:
+        face = await async_client.faces.download_thumbnail(
+            "face_id",
+        )
+        assert_matches_type(object, face, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_download_thumbnail(self, async_client: AsyncPhotos) -> None:
+        response = await async_client.faces.with_raw_response.download_thumbnail(
+            "face_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        face = await response.parse()
+        assert_matches_type(object, face, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_download_thumbnail(self, async_client: AsyncPhotos) -> None:
+        async with async_client.faces.with_streaming_response.download_thumbnail(
+            "face_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            face = await response.parse()
+            assert_matches_type(object, face, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_path_params_download_thumbnail(self, async_client: AsyncPhotos) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `face_id` but received ''"):
+            await async_client.faces.with_raw_response.download_thumbnail(
                 "",
             )
