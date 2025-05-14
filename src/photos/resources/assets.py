@@ -145,6 +145,7 @@ class AssetsResource(SyncAPIResource):
         *,
         album_id: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        person_id: Optional[str] | NotGiven = NOT_GIVEN,
         starting_after_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -160,6 +161,8 @@ class AssetsResource(SyncAPIResource):
 
         Args:
           album_id: Filter by assets in a specific album
+
+          person_id: Filter by assets associated with a specific person ID
 
           starting_after_id: Asset ID to start listing assets after
 
@@ -183,6 +186,7 @@ class AssetsResource(SyncAPIResource):
                     {
                         "album_id": album_id,
                         "limit": limit,
+                        "person_id": person_id,
                         "starting_after_id": starting_after_id,
                     },
                     asset_list_params.AssetListParams,
@@ -416,6 +420,7 @@ class AsyncAssetsResource(AsyncAPIResource):
         *,
         album_id: Optional[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        person_id: Optional[str] | NotGiven = NOT_GIVEN,
         starting_after_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -431,6 +436,8 @@ class AsyncAssetsResource(AsyncAPIResource):
 
         Args:
           album_id: Filter by assets in a specific album
+
+          person_id: Filter by assets associated with a specific person ID
 
           starting_after_id: Asset ID to start listing assets after
 
@@ -454,6 +461,7 @@ class AsyncAssetsResource(AsyncAPIResource):
                     {
                         "album_id": album_id,
                         "limit": limit,
+                        "person_id": person_id,
                         "starting_after_id": starting_after_id,
                     },
                     asset_list_params.AssetListParams,
