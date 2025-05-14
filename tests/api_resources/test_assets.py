@@ -127,6 +127,7 @@ class TestAssets:
         asset = client.assets.list(
             album_id="album_id",
             limit=1,
+            person_id="person_id",
             starting_after_id="starting_after_id",
         )
         assert_matches_type(SyncCursorPage[AssetResponse], asset, path=["response"])
@@ -421,6 +422,7 @@ class TestAsyncAssets:
         asset = await async_client.assets.list(
             album_id="album_id",
             limit=1,
+            person_id="person_id",
             starting_after_id="starting_after_id",
         )
         assert_matches_type(AsyncCursorPage[AssetResponse], asset, path=["response"])

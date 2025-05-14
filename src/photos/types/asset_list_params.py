@@ -14,5 +14,8 @@ class AssetListParams(TypedDict, total=False):
 
     limit: int
 
+    person_id: Optional[str]
+    """Filter by assets associated with a specific person ID"""
+
     starting_after_id: Optional[str]
     """Asset ID to start listing assets after"""
