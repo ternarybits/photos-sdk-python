@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-05-20)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/ternarybits/photos-sdk-python/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* **api:** update via SDK Studio ([8052ca4](https://github.com/ternarybits/photos-sdk-python/commit/8052ca47dd23dae3827d26d090aa59d71909fc8a))
+
+
+### Chores
+
+* **ci:** fix installation instructions ([80e2b01](https://github.com/ternarybits/photos-sdk-python/commit/80e2b0124a8b15b7fa115a80e945fcb5136214d2))
+* **ci:** upload sdks to package manager ([4cbcd42](https://github.com/ternarybits/photos-sdk-python/commit/4cbcd4277b2e63ed9e9d024d02fe0431f1642114))
+* **internal:** codegen related update ([1d57e93](https://github.com/ternarybits/photos-sdk-python/commit/1d57e931f8a80e692fdbbfb24839fb0e2f6280c3))
+
 ## 0.1.0-alpha.7 (2025-05-14)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/ternarybits/photos-sdk-python/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
